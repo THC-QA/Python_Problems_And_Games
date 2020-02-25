@@ -11,6 +11,8 @@ This repository contains python projects used for the python learning week.
 
 + Password Generator
 
++ Phone Number Generator
+
 + Hangman
 
 + Family Tree
