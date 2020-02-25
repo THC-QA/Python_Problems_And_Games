@@ -95,14 +95,14 @@ def display_board(hangman_pics, letters_miss, letters_correct, secret_word):
 def letter_input(already_guessed):
     san_loop = True
     while san_loop == True:
-        guess = str(input("Input a single letter: "))
+        guess = input("Input a single letter: ")
         if len(guess) != 1:
-            print("Please input a single letter.")
+            print("Please input a single, lowercase letter.")
             continue
         elif guess in already_guessed:
             print("You already did that, try again.")
             continue
-        elif guess.isalpha() == False and guess.isupper() == False:
+        elif guess.isalpha() == False and guess.islower() == False:
             print("Please print a lowercase alphabet letter.")
             continue
         else:
