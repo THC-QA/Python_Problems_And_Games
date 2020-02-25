@@ -2,6 +2,7 @@
 # Hangman game
 from random import randint
 import pdb
+import getpass
 hangman_pics = ['''
 
 
@@ -115,7 +116,21 @@ guess_round = True
 while game == True:
     letters_correct = ""
     letters_miss = ""
-    secret_word = get_random_word(words)
+    mode = input("Single player or Two Player? (S/T): ")
+    mode_loop = True
+    while mode_loop == True:
+        if mode == "S" or mode == "s":
+            secret_word = get_random_word(words)
+            mode_loop = False
+            break
+        elif mode == "T" or mode =="t":
+            secret_word = getpass.getpass(prompt = "Player one is setter.\n" + "Please input a word, all lowercase: ")
+            print("Second player, begin guessing:")
+            mode_loop = False
+            break
+        else:
+            print("Please input either S or T.")
+            continue
     while guess_round == True:
         display_board(hangman_pics, letters_miss, letters_correct, secret_word)
         guess = letter_input(letters_correct + letters_miss)
@@ -138,26 +153,26 @@ while game == True:
                 print("You took " + str(len(letters_miss) + len(letters_correct)) + " guesses.")
                 print("The secret word was " + secret_word + ".")
                 print("""
-                                      :::!~!!!!!:.
-                                .xUHWH!! !!?M88WHX:.
-                                .X*#M@$!!  !X!M$$$$$$WWx:.
-                            :!!!!!!?H! :!$!$$$$$$$$$$8X:
-                            !!~  ~:~!! :~!$!#$$$$$$$$$$8X:
-                            :!~::!H!<   ~.U$X!?R$$$$$$$$MM!
-                            ~!~!!!!~~ .:XW$$$U!!?$$$$$$RMM!
-                            !:~~~ .:!M"T#$$$$WX??#MRRMMM!
-                            ~?WuxiW*`   `"#$$$$8!!!!??!!!
-                            :X- M$$$$       `"T#$T~!8$WUXU~
-                            :%`  ~#$$$m:        ~!~ ?$$$$$$
-                        :!`.-   ~T$$$$8xx.  .xWW- ~""##*"
-                .....   -~~:<` !    ~?T#$$@@W@*?$$      /`
-                W$@@M!!! .!~~ !!     .:XUW$W!~ `"~:    :
-                #"~~`.:x%`!!  !H:   !WM$$$$Ti.: .!WUn+!`
-                :::~:!!`:X~ .: ?H.!u "$$$B$$$!W:U!T$$M~
-                .~~   :X@!.-~   ?@WTWo("*$$$W$TH$! `
-                Wi.~!X$?!-~    : ?$$$B$Wu("**$RM!
-                $R@i.~~ !     :   ~$$$$$B$$en:``
-                ?MXT@Wx.~    :     ~"##*$$$$M~""")
+                    :::!~!!!!!:.
+                .xUHWH!! !!?M88WHX:.
+             .X*#M@$!!  !X!M$$$$$$WWx:.
+            :!!!!!!?H! :!$!$$$$$$$$$$8X:
+            !!~  ~:~!! :~!$!#$$$$$$$$$$8X:
+            :!~::!H!<   ~.U$X!?R$$$$$$$$MM!
+            ~!~!!!!~~ .:XW$$$U!!?$$$$$$RMM!
+            !:~~~ .:!M"T#$$$$WX??#MRRMMM!
+            ~?WuxiW*`   `"#$$$$8!!!!??!!!
+            :X- M$$$$       `"T#$T~!8$WUXU~
+            :%`  ~#$$$m:        ~!~ ?$$$$$$
+        :!`.-   ~T$$$$8xx.  .xWW- ~""##*"
+.....   -~~:<` !    ~?T#$$@@W@*?$$      /`
+W$@@M!!! .!~~ !!     .:XUW$W!~ `"~:    :
+#"~~`.:x%`!!  !H:   !WM$$$$Ti.: .!WUn+!`
+:::~:!!`:X~ .: ?H.!u "$$$B$$$!W:U!T$$M~
+.~~   :X@!.-~   ?@WTWo("*$$$W$TH$! `
+Wi.~!X$?!-~    : ?$$$B$Wu("**$RM!
+$R@i.~~ !     :   ~$$$$$B$$en:``
+?MXT@Wx.~    :     ~"##*$$$$M~""")
                 guess_round = False
     play_again = input("Play again? (Y/N): ")
     if play_again == "y" or play_again == "y":
