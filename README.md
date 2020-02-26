@@ -20,7 +20,7 @@ This repository contains python projects used for the python learning week.
 + Blackjack
 
 ---
-**Unfinished**
+**Unfinished: Object Oriented Programs**
 
 + *Family Tree*
 
