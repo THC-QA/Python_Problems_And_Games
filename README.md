@@ -21,7 +21,6 @@ This repository contains python projects used for the python learning week.
 
 ---
 **Unfinished**
----
 
 + *Family Tree*
 
