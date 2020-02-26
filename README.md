@@ -18,3 +18,12 @@ This repository contains python projects used for the python learning week.
 + Family Tree
 
 + Blackjack
+
+---
+**Unfinished: Object Oriented Programs**
+
++ *Family Tree*
+
++ *Blackjack*
+
++ *Battleship*
