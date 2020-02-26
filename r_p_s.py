@@ -30,9 +30,19 @@ hands = ("rock","paper","scissors")
 player_history = []
 machine_hand = hands[randint(0,2)]
 game = True
-while game == True:
-    player_hand = input("Rock, paper, or scissors? (input lowercase): ")
+while game:
+    hand = True
+    while hand:
+        player_hand = input("Rock, paper, or scissors? (input lowercase): ")
+        player_hand = player_hand.lower()
+        if player_hand not in hands:
+            print("Please input rock, paper, or scissors.")
+            continue
+        else:
+            hand = False
+            break
     player_history.append(int(scores[player_hand]))
+    print("I choose " + machine_hand)
     rps(machine_hand, player_hand)
     machine_hand = choice[round(sum(player_history)/len(player_history))]
     repeat_game = input("Play again? (Y/N): ")
