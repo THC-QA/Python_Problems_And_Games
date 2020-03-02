@@ -45,8 +45,10 @@ def san_input(prompt = "Input: ", type = None):
                 for ch in out:
                     if ch.isspace() == True:
                         print("Please enter a single word, only using alphabet characters.")
+                        break
                     else:
                         print("Please input only alphabet characters.")
+                        break
                 continue
     elif type == "alpha_phrase":
         alpha_phrase_loop = True
