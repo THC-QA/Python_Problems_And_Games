@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 def span_even():
     out = []
-    for i in range(1000,3000):
+    for i in range(1000,3001):
         i = [int(x) for x in str(i)]
         n = []
         for ch in i:
@@ -11,6 +11,6 @@ def span_even():
             l = ""
             for ch in i:
                 l+=str(ch)
-            out.append(int(l))
-    return out
+            out.append(l)
+    return ", ".join(out)
 print(span_even())
