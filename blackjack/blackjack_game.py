@@ -77,8 +77,7 @@ class Game:
                 sleep(2)
                 print("Your hand is:")
                 self.player_hand.display()
-                print()
-                print("My hand is:")
+                print("\nMy hand is:")
                 self.dealer_hand.display()
                 game_over = False
                 while not game_over:
@@ -100,6 +99,12 @@ class Game:
                     else:
                         player_hand_value = self.player_hand.get_value()
                         dealer_hand_value = self.dealer_hand.get_value()
+
+                        while dealer_hand_value < 17:
+                            self.dealer_hand.add_card(self.deck.deal())
+                            print("\nLooks like I have to hit again...")
+                            self.dealer_hand.display()
+                            dealer_hand_value = self.dealer_hand.get_value()
 
                         print("\nSo at the end of that hand;")
                         print("\nYour score was", player_hand_value, end = " ")

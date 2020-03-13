@@ -6,6 +6,8 @@ class hand:
         self.dealer = dealer
         self.cards = []
         self.value = 0
+        if self.dealer:
+            self.dealerhit = False
     def add_card(self,card):
         self.cards.append(card)
     def calculate_value(self):
@@ -27,8 +29,12 @@ class hand:
         return self.value
     def display(self):
         if self.dealer:
+            if self.dealerhit:
+                for card in self.cards:
+                    print(card)
             print("hidden")
             print(self.cards[1])
+            self.dealerhit = True
         else:
             print("")
             for card in self.cards:
