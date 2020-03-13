@@ -32,9 +32,10 @@ class hand:
             if self.dealerhit:
                 for card in self.cards:
                     print(card)
-            print("hidden")
-            print(self.cards[1])
-            self.dealerhit = True
+            else:
+                print("hidden")
+                print(self.cards[1])
+                self.dealerhit = True
         else:
             print("")
             for card in self.cards:

@@ -93,7 +93,7 @@ class Game:
                     if choice in ['hit', 'h']:
                         self.player_hand.add_card(self.deck.deal())
                         self.player_hand.display()
-                        if self.player_is_over():
+                        if self.check_if_over():
                             print("\nLooks like you've gone bust there...\n...tough luck.")
                             game_over = True
                     else:
@@ -105,18 +105,22 @@ class Game:
                             print("\nLooks like I have to hit again...")
                             self.dealer_hand.display()
                             dealer_hand_value = self.dealer_hand.get_value()
+                            if self.check_if_over():
+                                print("\nLooks like I've gone bust...\n...damn.")
+                                game_over = True
 
-                        print("\nSo at the end of that hand;")
-                        print("\nYour score was", player_hand_value, end = " ")
-                        print(", and mine was", dealer_hand_value)
+                        if dealer_hand_value <= 21:
+                            print("\nSo at the end of that hand;")
+                            print("\nYour score was", player_hand_value, end = " ")
+                            print(", and mine was", dealer_hand_value)
 
-                        if player_hand_value > dealer_hand_value:
-                            print("\nLooks like you won.")
-                        elif player_hand_value == dealer_hand_value:
-                            print("\nWell look at that...\n...it's a tie.")
-                        else:
-                            print("\nHa!\nI've won...")
-                        game_over = True
+                            if player_hand_value > dealer_hand_value:
+                                print("\nLooks like you won.")
+                            elif player_hand_value == dealer_hand_value:
+                                print("\nWell look at that...\n...it's a tie.")
+                            else:
+                                print("\nHa!\nI've won...")
+                            game_over = True
                 again = input("\nAnother hand? [Y/N] ")
                 while again.lower() not in ["y", "n"]:
                     again = input("\nI didn't catch that...\nDid you say Y or N? ")
@@ -150,5 +154,5 @@ class Game:
             print("You have blackjack! You win!")
         elif dealer_has_blackjack:
             print("Dealer has blackjack! Dealer wins!")
-    def player_is_over(self):
-        return self.player_hand.get_value() > 21
+    def check_if_over(self):
+        return True if (self.player_hand.get_value() > 21 or self.dealer_hand.get_value() > 21) else False
